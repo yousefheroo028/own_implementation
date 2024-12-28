@@ -172,8 +172,4 @@ public:
 
 template<class T>
 int ungrouped_data<T>::number_of_data = 0;
-
-// class grouped_data {
-//
-// };
 #endif
