@@ -16,7 +16,7 @@ class Stack
     Node* tail;
 
 public:
-    Stack(): length(0), tail(0)
+    Stack(): length(0), tail(nullptr)
     {
     }
 
@@ -24,9 +24,7 @@ public:
     {
         Node* newNode = new Node;
         newNode->value = item;
-        if (!length)
-            newNode->next = nullptr;
-        else newNode->next = tail;
+        newNode->next = tail;
         tail = newNode;
         length++;
     }
@@ -38,6 +36,11 @@ public:
 
     void pop()
     {
+        if (tail == nullptr)
+        {
+            cout << "The Stack is empty.\n";
+            return;
+        }
         const Node* temp = tail;
         tail = tail->next;
         delete temp;
