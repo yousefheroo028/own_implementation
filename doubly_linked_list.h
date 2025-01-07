@@ -240,6 +240,27 @@ public:
         return print;
     }
 
+    T& operator[](const int pos)
+    {
+        Node* current = head;
+        try
+        {
+            if (pos < 0 || pos >= length)
+            {
+                throw "Error! Index is out of range.";
+            }
+            for (int i = 0; i < pos; i++)
+            {
+                current = current->next;
+            }
+        }
+        catch (const char* e)
+        {
+            cout << e;
+        }
+        return current->value;
+    }
+
     ~doubly_linked_list()
     {
         delete head;
