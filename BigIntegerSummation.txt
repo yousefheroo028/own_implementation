@@ -1,0 +1,30 @@
+static string BigIntegerSummation(const string& num1, const string& num2) {
+	string result;
+	stack<short> firstInt, secondInt, Sum;
+	short carry = 0, sum = 0;
+	for (int i = 0; i < num1.size(); i++)
+	{
+		firstInt.push(num1[i] - '0');
+	}
+	for (int i = 0; i < num2.size(); i++)
+	{
+		secondInt.push(num2[i] - '0');
+	}
+	while (firstInt.size() && secondInt.size())
+	{
+		sum = (firstInt.size() ? firstInt.top() : 0) + (secondInt.size() ? secondInt.top() : 0) + carry;
+		if (sum > 9)
+		{
+			carry = sum / 10;
+			sum = sum % 10;
+		}
+		Sum.push(sum);
+		if (firstInt.size()) firstInt.pop();
+		if (secondInt.size()) secondInt.pop();
+	}
+	while (Sum.size()) {
+		result += Sum.top() + '0';
+		Sum.pop();
+	}
+	return result;
+}
